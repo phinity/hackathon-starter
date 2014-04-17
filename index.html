@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <title>Hackathon Starter</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/animate.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <script src="javascripts/modernizr.custom.js"></script>
+</head>
+<body class="withAnimation">
+<div id="boxedWrapper">
+
+<!-- navbar -->
+<nav class="navbar navbar-default navbar-fixed-top navbar-transparent" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#start">Start</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#pros-cons">Usage</a></li>
+        <li><a href="#frameworks">Frameworks</a></li>
+        <li><a href="#bespoke">Bespoke</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- / navbar -->
+
+
+<div class="parallaxSection height100" data-bg="images/13.jpg" id="start">
+
+  <section class="flexslider std-slider center-controls" data-height="0" data-loop="true" data-smooth="false" data-slideshow="true" data-speed="15000" data-animspeed="550" data-controls="false" data-dircontrols="true">
+    <ul class="slides">
+      <li>
+        <div class="container">
+          <div class="inner">
+            <div class="text-center">
+              <h2 class="page-title animated" data-fx="fadeInDown">OFA Web Team Tech Talk 4/17/14</h2>
+
+              <h2 class="animated" data-fx="bounceIn">HACKATHON STARTER</h2>
+              <p class="animated" data-fx="bounceIn">An Introduction to Node.js and practical solution</p>
+              <a href="https://github.com/phinity/hackathon-starter" class="btn btn-default btn-lg animated" data-fx="fadeInUp">Fork me on github</a>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <!-- / flexslider -->
+  <!--a href="#about" class="bigArrow local menuOffset"><i class="fa fa-angle-down"></i></a-->
+
+</div>
+<!-- / parallaxSection -->
+
+
+<section class="content-area bg1" id="overview">
+  <div class="container">
+
+    <header class=" col-md-8 col-md-offset-2">
+      <h1 class="page-title text-center">Node Overview</h1>
+
+      <p class="larger animated" data-fx="fadeInLeft">Node.js is a server side platform built on Chrome's V8 javascript engine for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.</p>
+    </header>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        
+        <ul class="animated" data-fx="slideInLeft">
+          <li>Node was Created by Ryan Dahl in 2009</li>
+          <li>Node is server side javascript and a command line tool</li>
+          <li>V8 is an open source js engine developed by google</li>
+          <li>Everything in node runs in a single-thread</li>
+          <li>Node itself isn’t just JavaScript - 40% js 60% C++</li>
+          <li>Though programs for node.js are written in js there is no DOM</li>
+          <li>The non-blocking I/O is implemented with Event-loops via JS's callback functionality.</li>
+        </ul>
+        
+        <div class="text-center">
+          <p>&nbsp;</p>
+          <p class="text-center animated" data-fx="flipInY"><img src="images/event-loop.png" ></p>
+          <p class="text-center animated" data-fx="flipInY"><img src="images/non-blocking.png" ></p>
+        </div>
+        
+        
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="content-area bg2" id="Usage">
+  <div class="container">
+    <header class="page-header text-center">
+      <h1 class="page-title">Usage</h1>
+      <h2 class="text-center animated" data-fx="fadeInLeft">Where and When to Use Node?</h2>
+    </header>
+    
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        
+        
+        <p class="larger animated" data-fx="fadeInLeftBig"><strong>"But I can do everything I need in: ruby, python, php, java, ... !".</strong></p>
+
+        <p class="animated" data-fx="fadeInLeftBig">I hear you. And you are right! Node is no freaking unicorn that will come and do your work for you, sorry. It's just a tool, and it probably won't replace your regular tools completely, at least not for now. :: <a href="http://debuggable.com/posts/understanding-node-js:4bd98440-45e4-4a9a-8ef7-0f7ecbdd56cb" target="_blank">Understanding node.js</a></p>
+        
+        
+        <p class="larger animated" data-fx="fadeInLeftBig"><strong>"Node.js is only suitable for writing small APIs, not for serious web sites or web applications".</strong></p>
+
+        <p class="animated" data-fx="fadeInLeftBig">This is bull*hit. I have to say it. :: <a target="_blank" href="https://coderwall.com/p/diokxg">Part I</a>, <a target="_blank" href="https://coderwall.com/p/diokxg">Part II</a>, <a target="_blank" href="https://coderwall.com/p/diokxg">Part III</a>, <a target="_blank" href="https://coderwall.com/p/diokxg">Part IV</a>, <a target="_blank" href="https://coderwall.com/p/diokxg">Part V</a></p>
+        <p>&nbsp;</p>
+        <h3 class="animated" data-fx="fadeInRightBig">Node as a UI layer</h3>
+        <ul class="animated" data-fx="fadeInRightBig">
+          <li><a href="http://www.nczonline.net/blog/2013/10/07/node-js-and-the-new-web-front-end/" target="_blank">Node.js and the new web front-end</a></li>
+          <li><a href="http://maxburstein.com/blog/realtime-django-using-nodejs-and-socketio/" target="_blank">Realtime Django Using Node.js and Socket.IO</a></li>
+          <li><a href="http://nodeguide.com/convincing_the_boss.html" target="_blank">Felix's Node.js Convincing the boss guide</a></li>
+        </ul>
+        <p  class="animated" data-fx="fadeInRightBig">The Downside of this approach is the use of two separate servers, adds more complexity. Using node.js with django is all about choosing an IPC method to communicate between two separate process, results in unnecisary compexity? 
+I think the best way is simply for each layer to talk to the data base seperatly.</p>
+        
+        <p>&nbsp;</p>
+        <h3 class="animated" data-fx="fadeInLeftBig">Node's Nitchs &mdash; Today</h3> 
+        <ul class="animated" data-fx="fadeInLeftBig">
+          <li>Small Website Projects</li>
+          <li>Very large progects as a UI layer</li>
+          <li>http, tcp, dns, static file servers</li>
+          <li>Real time apps like chating or games</li>
+          <li>A service or tool for a realtime feature</li>
+          <li>Comand line tool</li>
+        </ul>
+        <p>&nbsp;</p>
+        <h3 class="animated" data-fx="fadeInRightBig">Pros</h3>
+        <ul class="animated" data-fx="fadeInRightBig">
+          <li>Use the same language for client and server. This allows fo</li>
+          <li>Use overlapping code on the frontend and the backend. 
+            <br> 
+            <a href="https://github.com/joefiorini/grunt-es6-module-transpiler">Grunt ES6 Module Transpiler</a>
+          </li>
+        </ul>
+        
+         
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="content-area bg1" id="frameworks">
+  <div class="container">
+
+    <header class=" col-md-8 col-md-offset-2">
+      <h1 class="page-title text-center">Node Frameworks</h1>
+    </header>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center">
+          
+          <p class="larger text-center animated" data-fx="fadeInLeft">These Frameworks are to Node as Rails is to Ruby</p>
+          
+            <p class="animated" data-fx="fadeInLeftBig"><a href="https://www.meteor.com/" target="_blank" ><img src="images/framework-meteor.png" width="200"></a></p>
+            <p>&nbsp;</p>
+            <p class="animated" data-fx="fadeInRightBig"><a href="http://sailsjs.org/" target="_blank"><img src="images/framework-sails.png" width="200"></a></p>
+          
+          <p>&nbsp;</p> 
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="content-area bg2" id="bespoke">
+  <div class="container">
+    <header class="page-header text-center">
+      <h1 class="page-title">A Bespoke Solution</h1>
+      
+      <h2>Hackathon Starter Overview</h2>
+      
+      <p class="larger animated" data-fx="fadeInLeft">Node itself is just a low-level framework providing functions for sending and receiving HTTP requests and performing other I/O. So when we talk about Node we are generally talking about the ecosystem of technologies built around it.</p>
+      
+    </header>
+    
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+        <h3 class="animated" data-fx="fadeInLeftBig">Enviorment</h3>
+        <ul class="animated" data-fx="fadeInLeftBig">
+          <li><a target="_blank" href="http://nodejs.org/api/">Node.js</a></li>
+          <li><a target="_blank" href="https://www.npmjs.org/">NPM</a> - Node Package Manager. (NPM comes bundled with node.js)</li>
+          <li><a target="_blank" href="http://docs.mongodb.org/">MongoDB</a> - an open-source document database, and the leading NoSQL database. </li>
+          <li><a target="_blank" href="http://mongoosejs.com/">Mongoose</a> - elegant mongodb object modeling for node.js</li>
+          <li><a target="_blank" href="http://expressjs.com/">Express JS</a> - web application framework for node</li>
+          <li><a target="_blank" href="http://www.senchalabs.org/connect/">Connect</a> - a middleware framework for node, bundled with express</li>
+          <li><a target="_blank" href="http://socket.io/">Socket.io</a> - makes realtime apps possible in every browser and mobile device, blurring the differences between the different transport mechanisms. It's care-free realtime 100% in JavaScript.</li>
+          <li><a target="_blank" href="http://jade-lang.com/">Jade</a> - Node template Engine</li>
+          <li><a target="_blank" href="http://embeddedjs.com/">EJS</a> - EJS cleans the HTML out of your JavaScript with client side templates.</li>
+          <li><a target="_blank" href="http://nodemon.io/">nodemon</a> -  a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development.</li>
+          <li><a href="_blank" href="http://backbonejs.org/">Backbone.js</a>, Naturally</li>
+        </ul>
+        
+        <p>&nbsp;</p>
+        <h3 class="animated" data-fx="fadeInRightBig">Enter Hackathon starter</h3>
+        
+        <ul class="animated" data-fx="fadeInRightBig">
+          <li><a href="https://github.com/sahat/hackathon-starter" target="_blank">Hackathon Starter &raquo;</a></li>
+          <li>If you're going the bespoke route, its very helpfull to have a base template to start from. </li>
+          <li>A starter app that puts the enviorment together to make a real time api.</li>
+        </ul>
+        
+        <p>&nbsp;</p>
+        <h3 class="animated" data-fx="fadeInLeftBig">Making a real time API</h3>
+        <ul class="animated" data-fx="fadeInLeftBig">
+          <li><a href="https://github.com/phinity/hackathon-starter" target="_blank">Hackathon Starter with realtime api &raquo;</a></li>
+        <li><a href="http://developer.teradata.com/blog/jasonstrimpel/2011/11/backbone-js-and-socket-io">Backbone.js and socket.io</a></li>  
+        <li><a href="http://swizec.com/blog/elegantly-using-socket-io-in-backbone-apps/swizec/5712">Elegantly using socket.io in backbone apps</a></li>  
+        <li><a href="http://danialk.github.io/blog/2013/02/10/building-a-contacts-manager-app-using-backbonejs-and-nodejs-and-mongodb/">Building a Contacts Manager App Using Backbonejs and Nodejs and MongoDB</a></li>
+        </ul>
+        
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<!-- / section -->
+
+
+<footer>
+  <div class="container mainfooter">
+    <div class="row">
+      <aside class="col-md-3 widget">
+
+      </aside>
+      <aside class="col-md-3 widget">
+
+      </aside>
+      <aside class="col-md-3 widget">
+      </aside>
+      <aside class="col-md-3 widget">
+
+      </aside>
+    </div>
+  </div>
+  <hr>
+  <div class="container postfooter">
+    <div class="row">
+      <aside class="col-md-6 widget">
+        <p>© 2014 Pluto template. Made with love by ThemeWoodmen</p>
+      </aside>
+      <aside class="col-md-6 widget">
+        <!--ul class="socialIcons pull-right">
+          <li><a href="#" data-toggle="tooltip" title="Facebook"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="#" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#" data-toggle="tooltip" title="Google+"><i class="fa fa-google-plus-square"></i></a></li>
+          <li><a href="#" data-toggle="tooltip" title="LinkedIn"><i class="fa fa-linkedin-square"></i></a></li>
+          <li><a href="#" data-toggle="tooltip" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+        </ul-->
+
+
+      </aside>
+    </div>
+  </div>
+</footer>
+
+
+</div>
+<!-- / boxedWrapper -->
+
+<!--a href="#" id="toTop"><i class="fa fa-angle-up"></i></a-->
+
+
+<script src="javascripts/jquery.min.js"></script>
+<script src="javascripts/bootstrap.min.js"></script>
+
+<script src="javascripts/detectmobilebrowser.js"></script>
+<script src="javascripts/gmap3.min.js"></script>
+<script src="javascripts/jquery.appear.js"></script>
+<script src="javascripts/jquery.isotope.min.js"></script>
+<script src="javascripts/jquery.ba-bbq.min.js"></script>
+<script src="javascripts/jquery.fitvids.js"></script>
+<script src="javascripts/jquery.flexslider-min.js"></script>
+<script src="javascripts/jquery.magnific-popup.min.js"></script>
+<script src="javascripts/jquery.placeholder.min.js"></script>
+<script src="javascripts/retina-1.1.0.min.js"></script>
+<script src="javascripts/jquery.tweet.js"></script>
+
+<script src="javascripts/main.js"></script>
+
+</body>
+</html>

@@ -29,7 +29,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="#start">Start</a></li>
         <li><a href="#overview">Overview</a></li>
-        <li><a href="#pros-cons">Usage</a></li>
+        <li><a href="#usage">Usage</a></li>
         <li><a href="#frameworks">Frameworks</a></li>
         <li><a href="#bespoke">Bespoke</a></li>
       </ul>
@@ -50,7 +50,7 @@
               <h2 class="page-title animated" data-fx="fadeInDown">OFA Web Team Tech Talk 4/17/14</h2>
 
               <h2 class="animated" data-fx="bounceIn">HACKATHON STARTER</h2>
-              <p class="animated" data-fx="bounceIn">An Introduction to Node.js and practical solution</p>
+              <p class="animated" data-fx="bounceIn">An Introduction to Node.js and Practical Solution</p>
               <a href="https://github.com/phinity/hackathon-starter" class="btn btn-default btn-lg animated" data-fx="fadeInUp">Fork me on github</a>
             </div>
           </div>
@@ -101,7 +101,7 @@
   </div>
 </section>
 
-<section class="content-area bg2" id="Usage">
+<section class="content-area bg2" id="usage">
   <div class="container">
     <header class="page-header text-center">
       <h1 class="page-title">Usage</h1>
@@ -143,10 +143,12 @@ I think the best way is simply for each layer to talk to the data base seperatly
         <p>&nbsp;</p>
         <h3 class="animated" data-fx="fadeInRightBig">Pros</h3>
         <ul class="animated" data-fx="fadeInRightBig">
-          <li>Use the same language for client and server. This allows fo</li>
+          <li>Use the same language for client and server.</li>
           <li>Use overlapping code on the frontend and the backend. 
-            <br> 
-            <a href="https://github.com/joefiorini/grunt-es6-module-transpiler">Grunt ES6 Module Transpiler</a>
+            <ul>
+              <li><a href="https://github.com/joefiorini/grunt-es6-module-transpiler" target="_blank">Grunt ES6 Module Transpiler</a></li>
+              <li><a href="http://browserify.org/" target="_blank">Browserify</a></li>
+              </ul>
           </li>
         </ul>
         
@@ -169,13 +171,14 @@ I think the best way is simply for each layer to talk to the data base seperatly
 
     <header class=" col-md-8 col-md-offset-2">
       <h1 class="page-title text-center">Node Frameworks</h1>
+      
+      <p class="larger text-center animated" data-fx="fadeInLeft">These Frameworks are to Node as Rails is to Ruby</p>
+      
     </header>
 
     <div class="row">
       <div class="col-md-6 col-md-offset-3 text-center">
-          
-          <p class="larger text-center animated" data-fx="fadeInLeft">These Frameworks are to Node as Rails is to Ruby</p>
-          
+         
             <p class="animated" data-fx="fadeInLeftBig"><a href="https://www.meteor.com/" target="_blank" ><img src="images/framework-meteor.png" width="200"></a></p>
             <p>&nbsp;</p>
             <p class="animated" data-fx="fadeInRightBig"><a href="http://sailsjs.org/" target="_blank"><img src="images/framework-sails.png" width="200"></a></p>
@@ -222,17 +225,17 @@ I think the best way is simply for each layer to talk to the data base seperatly
         
         <ul class="animated" data-fx="fadeInRightBig">
           <li><a href="https://github.com/sahat/hackathon-starter" target="_blank">Hackathon Starter &raquo;</a></li>
-          <li>If you're going the bespoke route, its very helpfull to have a base template to start from. </li>
-          <li>A starter app that puts the enviorment together to make a real time api.</li>
+          <li>If you're going the bespoke route, its very helpfull to have a base project to start from. </li>
+          <li>A starter app that puts the enviorment and common patterns together.</li>
         </ul>
         
         <p>&nbsp;</p>
         <h3 class="animated" data-fx="fadeInLeftBig">Making a real time API</h3>
         <ul class="animated" data-fx="fadeInLeftBig">
           <li><a href="https://github.com/phinity/hackathon-starter" target="_blank">Hackathon Starter with realtime api &raquo;</a></li>
-        <li><a href="http://developer.teradata.com/blog/jasonstrimpel/2011/11/backbone-js-and-socket-io">Backbone.js and socket.io</a></li>  
-        <li><a href="http://swizec.com/blog/elegantly-using-socket-io-in-backbone-apps/swizec/5712">Elegantly using socket.io in backbone apps</a></li>  
-        <li><a href="http://danialk.github.io/blog/2013/02/10/building-a-contacts-manager-app-using-backbonejs-and-nodejs-and-mongodb/">Building a Contacts Manager App Using Backbonejs and Nodejs and MongoDB</a></li>
+        <li><a href="http://developer.teradata.com/blog/jasonstrimpel/2011/11/backbone-js-and-socket-io" target="_blank">Backbone.js and socket.io</a></li>  
+        <li><a href="http://swizec.com/blog/elegantly-using-socket-io-in-backbone-apps/swizec/5712" target="_blank">Elegantly using socket.io in backbone apps</a></li>  
+        <li><a href="http://danialk.github.io/blog/2013/02/10/building-a-contacts-manager-app-using-backbonejs-and-nodejs-and-mongodb/" target="_blank">Building a Contacts Manager App Using Backbonejs and Nodejs and MongoDB</a></li>
         </ul>
         
       </div>
@@ -251,37 +254,10 @@ I think the best way is simply for each layer to talk to the data base seperatly
 
 
 <footer>
-  <div class="container mainfooter">
-    <div class="row">
-      <aside class="col-md-3 widget">
-
-      </aside>
-      <aside class="col-md-3 widget">
-
-      </aside>
-      <aside class="col-md-3 widget">
-      </aside>
-      <aside class="col-md-3 widget">
-
-      </aside>
-    </div>
-  </div>
-  <hr>
   <div class="container postfooter">
     <div class="row">
       <aside class="col-md-6 widget">
         <p>© 2014 Pluto template. Made with love by ThemeWoodmen</p>
-      </aside>
-      <aside class="col-md-6 widget">
-        <!--ul class="socialIcons pull-right">
-          <li><a href="#" data-toggle="tooltip" title="Facebook"><i class="fa fa-facebook-square"></i></a></li>
-          <li><a href="#" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="#" data-toggle="tooltip" title="Google+"><i class="fa fa-google-plus-square"></i></a></li>
-          <li><a href="#" data-toggle="tooltip" title="LinkedIn"><i class="fa fa-linkedin-square"></i></a></li>
-          <li><a href="#" data-toggle="tooltip" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-        </ul-->
-
-
       </aside>
     </div>
   </div>

@@ -8,22 +8,15 @@ jQuery(document).ready(function() {
       baseUrl: 'http://127.0.0.1:3000/',
       socket: false,
       
-      sessionkey: false,
-      
       models: {},
       collections: {},
       
       views: {},
-      router: {},
-      
-      events: {}
+      router: {}
   };
   
-  
-  
   hs.init = function() {
-      
-      
+    
     if($('#allUsers').length) {
       hs.users = new hs.collections.users();
       
@@ -37,11 +30,10 @@ jQuery(document).ready(function() {
           }
       });
     }
-    
   };
   
   
-  // custom sync // Backbone 
+  // custom Backbone sync for websockets
   hs.sync = function(method, model, options) {
       socket = window.hs.socket;
       
@@ -123,8 +115,8 @@ jQuery(document).ready(function() {
           socket.emit(action, {signature: sign, 'item': model.attributes });
           socket.once(e, function(myData) {
               //TODO
-          });                          
-      };            
+          });
+      };
      
       // entry point for method
       switch (method) {
@@ -160,6 +152,8 @@ jQuery(document).ready(function() {
       noun: 'user',
       sync: hs.sync
   });
+  
+  // User Collection
   hs.collections.users = Backbone.Collection.extend({
       /*initialize: function() {},*/
       model: hs.models.user,

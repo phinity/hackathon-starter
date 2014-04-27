@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var passport = require('passport');
+var InstagramStrategy = require('passport-instagram').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
@@ -21,9 +22,50 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-/**
- * Sign in using Email and Password.
- */
+// Sign in with Instagram.
+
+passport.use(new InstagramStrategy(secrets.instagram,function(req, accessToken, refreshToken, profile, done) {
+  if (req.user) {
+    User.findOne({ instagram: profile.id }, function(err, existingUser) {
+      if (existingUser) {
+        req.flash('errors', { msg: 'There is already an Instagram account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
+        done(err);
+      } else {
+        User.findById(req.user.id, function(err, user) {
+          user.instagram = profile.id;
+          user.tokens.push({ kind: 'instagram', accessToken: accessToken });
+          user.profile.name = user.profile.name || profile.displayName;
+          user.profile.picture = user.profile.picture || profile._json.data.profile_picture;
+          user.profile.website = user.profile.website || profile._json.data.website;
+          user.save(function(err) {
+            req.flash('info', { msg: 'Instagram account has been linked.' });
+            done(err, user);
+          });
+        });
+      }
+    });
+  } else {
+    User.findOne({ instagram: profile.id }, function(err, existingUser) {
+      if (existingUser) return done(null, existingUser);
+
+      var user = new User();
+      user.instagram = profile.id;
+      user.tokens.push({ kind: 'instagram', accessToken: accessToken });
+      user.profile.name = profile.displayName;
+      // Similar to Twitter API, assigns a temporary e-mail address
+      // to get on with the registration process. It can be changed later
+      // to a valid e-mail address in Profile Management.
+      profile.username + "@instagram.com";
+      user.profile.website = profile._json.data.website;
+      user.profile.picture = profile._json.data.profile_picture;
+      user.save(function(err) {
+        done(err, user);
+      });
+    });
+  }
+}));
+
+// Sign in using Email and Password.
 
 passport.use(new LocalStrategy({ usernameField: 'email' }, function(email, password, done) {
   User.findOne({ email: email }, function(err, user) {
@@ -42,7 +84,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, function(email, passw
  * OAuth Strategy Overview
  *
  * - User is already logged in.
- *   - Check if there is an existing account with a provider id or email.
+ *   - Check if there is an existing account with a <provider> id.
  *     - If there is, return an error message. (Account merging not supported)
  *     - Else link new OAuth account with currently logged-in user.
  * - User is not logged in.
@@ -53,13 +95,11 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, function(email, passw
  *       - Else create a new account.
  */
 
-/**
- * Sign in with Facebook.
- */
+// Sign in with Facebook.
 
 passport.use(new FacebookStrategy(secrets.facebook, function(req, accessToken, refreshToken, profile, done) {
   if (req.user) {
-    User.findOne({ $or: [{ facebook: profile.id }, { email: profile.email }] }, function(err, existingUser) {
+    User.findOne({ facebook: profile.id }, function(err, existingUser) {
       if (existingUser) {
         req.flash('errors', { msg: 'There is already a Facebook account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
         done(err);
@@ -102,13 +142,11 @@ passport.use(new FacebookStrategy(secrets.facebook, function(req, accessToken, r
   }
 }));
 
-/**
- * Sign in with GitHub.
- */
+// Sign in with GitHub.
 
 passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refreshToken, profile, done) {
   if (req.user) {
-    User.findOne({ $or: [{ github: profile.id }, { email: profile.email }] }, function(err, existingUser) {
+    User.findOne({ github: profile.id }, function(err, existingUser) {
       if (existingUser) {
         req.flash('errors', { msg: 'There is already a GitHub account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
         done(err);
@@ -152,9 +190,7 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
   }
 }));
 
-/**
- * Sign in with Twitter.
- */
+// Sign in with Twitter.
 
 passport.use(new TwitterStrategy(secrets.twitter, function(req, accessToken, tokenSecret, profile, done) {
   if (req.user) {
@@ -197,13 +233,11 @@ passport.use(new TwitterStrategy(secrets.twitter, function(req, accessToken, tok
   }
 }));
 
-/**
- * Sign in with Google.
- */
+// Sign in with Google.
 
 passport.use(new GoogleStrategy(secrets.google, function(req, accessToken, refreshToken, profile, done) {
   if (req.user) {
-    User.findOne({ $or: [{ google: profile.id }, { email: profile.email }] }, function(err, existingUser) {
+    User.findOne({ google: profile.id }, function(err, existingUser) {
       if (existingUser) {
         req.flash('errors', { msg: 'There is already a Google account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
         done(err);
@@ -245,16 +279,11 @@ passport.use(new GoogleStrategy(secrets.google, function(req, accessToken, refre
   }
 }));
 
-/**
- * Sign in with LinkedIn.
- */
+// Sign in with LinkedIn.
 
 passport.use(new LinkedInStrategy(secrets.linkedin, function(req, accessToken, refreshToken, profile, done) {
   if (req.user) {
-    User.findOne({ $or: [
-      { linkedin: profile.id },
-      { email: profile._json.emailAddress }
-    ] }, function(err, existingUser) {
+    User.findOne({ linkedin: profile.id }, function(err, existingUser) {
       if (existingUser) {
         req.flash('errors', { msg: 'There is already a LinkedIn account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
         done(err);
@@ -298,10 +327,7 @@ passport.use(new LinkedInStrategy(secrets.linkedin, function(req, accessToken, r
   }
 }));
 
-/**
- * Tumblr API
- * Uses OAuth 1.0a Strategy.
- */
+// Tumblr API setup.
 
 passport.use('tumblr', new OAuthStrategy({
     requestTokenURL: 'http://www.tumblr.com/oauth/request_token',
@@ -322,10 +348,7 @@ passport.use('tumblr', new OAuthStrategy({
   }
 ));
 
-/**
- * Foursquare API
- * Uses OAuth 2.0 Strategy.
- */
+// Foursquare API setup.
 
 passport.use('foursquare', new OAuth2Strategy({
     authorizationURL: 'https://foursquare.com/oauth2/authorize',
@@ -345,10 +368,7 @@ passport.use('foursquare', new OAuth2Strategy({
   }
 ));
 
-/**
- * Venmo API
- * Uses OAuth 2.0 Strategy.
- */
+// Venmo API setup.
 
 passport.use('venmo', new OAuth2Strategy({
     authorizationURL: 'https://api.venmo.com/v1/oauth/authorize',
@@ -368,21 +388,21 @@ passport.use('venmo', new OAuth2Strategy({
   }
 ));
 
-/**
- * Login Required middleware.
- */
+// Login Required middleware.
 
 exports.isAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) return next();
   res.redirect('/login');
 };
 
-/**
- * Authorization Required middleware.
- */
+// Authorization Required middleware.
 
 exports.isAuthorized = function(req, res, next) {
   var provider = req.path.split('/').slice(-1)[0];
-  if (_.findWhere(req.user.tokens, { kind: provider })) next();
-  else res.redirect('/auth/' + provider);
+
+  if (_.findWhere(req.user.tokens, { kind: provider })) {
+    next();
+  } else {
+    res.redirect('/auth/' + provider);
+  }
 };

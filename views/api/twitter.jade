@@ -18,18 +18,35 @@ block content
       | API Endpoints
 
   br
-  .lead Latest 50 Tweets containing "Hackathon" in NYC within 5 miles
 
-  ul.list-unstyled
+  .well
+    h4 Compose new Tweet
+    form(role='form', method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        input.form-control(type='text', name='tweet', autofocus)
+        p.help-block This new Tweet will be posted on your Twitter profile.
+      button.btn.btn-primary(type='submit')
+        i.fa.fa-twitter
+        |  Tweet
+
+  br
+
+  .lead Latest
+    strong  #{tweets.length}
+    |  Tweets containing the term
+    strong  nodejs
+    |  in NYC within
+    strong  5
+    |  miles radius
+
+  ul.media-list
     for tweet in tweets
-      li
-        .panel.panel-default
-          .panel-body
-            .clearfix
-              - var image = tweet.user.profile_image_url.replace('_normal', '');
-              img.pull-left(src='#{image}', width=50, height=50, style='margin-right: 10px')
-
-              =tweet.user.name
-              small.text-muted  @#{tweet.user.screen_name}
-              br
-              small #{tweet.text}
+      li.media
+        a.pull-left(href='#')
+          - var image = tweet.user.profile_image_url.replace('_normal', '');
+          img.media-object(src='#{image}', style='width: 64px; height: 64px;')
+        .media-body
+          strong.media-heading #{tweet.user.name}
+          span.text-muted  @#{tweet.user.screen_name}
+          p= tweet.text

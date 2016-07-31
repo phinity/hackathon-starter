@@ -30,8 +30,6 @@ dotenv.load({ path: '.env.example' });
 var util = require('./config/util');
 
 
-var userController = require('./controllers/user');
-
 
 /**
  * Controllers (route handlers).

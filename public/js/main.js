@@ -18,6 +18,7 @@ jQuery(document).ready(function() {
   hs.init = function() {
     
     if($('#allUsers').length) {
+      console.log('init');
       hs.users = new hs.collections.users();
       
       hs.users.fetch({
@@ -311,6 +312,7 @@ jQuery(document).ready(function() {
       },
       
       setInputs: function() {
+          this.inputs = this.$el.find('input[name^=email]');
           this.inputs = this.$el.find('input[name^=user]');//+this.model.noun+
       },
       
@@ -369,6 +371,7 @@ jQuery(document).ready(function() {
       },
       
       setInputs: function() {
+        console.log(this.model.noun);
           this.inputs = this.$el.find('input[name^='+this.model.noun+']'); //, select[name^=user], textarea[name^=user]
       },
       
@@ -520,5 +523,8 @@ jQuery(document).ready(function() {
   
   hs.init();
   
+ 
+ 
   
 })(jQuery, Backbone);
+});

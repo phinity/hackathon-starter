@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const errorHandler = require('errorhandler');
 const lusca = require('lusca');
+
 const dotenv = require('dotenv');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
@@ -53,8 +54,13 @@ const app = express();
  * socket.io config
  */
 
-var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
+//const server = require('http').Server(app);
+//const io = require('socket.io').listen(server);
+
+
+const server = require('http').Server(app);
+const io = require('socket.io').listen(server);
+//console.log(io);
 
 
 /**
@@ -247,7 +253,7 @@ app.get('/users?:format?/:id/edit/?$', function(req,res) {
   userController.editUser(req, res, req.query);
 });
 // delete User
-app.del('/users?:format?/:id/?$', function(req,res) {
+app.delete('/users?:format?/:id/?$', function(req,res) {
   userController.deleteUser(req, res, req.body);
 });
 app.get('/users?:format?/:id/delete/?$', function(req,res) {
@@ -268,9 +274,9 @@ app.get('/users?:format?/?$', function(req, res) {//util.requireRole('admin'),
 app.use(errorHandler());
 
 /**
- * Start Express server.
+ * Start Express server, with socket.io
  */
-app.listen(app.get('port'), () => {
+server.listen(app.get('port'), () => {
   console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
 

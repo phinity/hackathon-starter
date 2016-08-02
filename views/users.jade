@@ -1,23 +1,25 @@
 extends layout
 
 block content
+
   div.page-header
     h1 Users
       span.pull-right
         a(class='adduser btn btn-primary', href='#', data-toggle="modal", data-target=".new_user_form") new user
-  
+
   table#allUsers.table.table-hover
     thead
       tr
         th Email
         th Name
         th(colspan=2) Config
+
   script#allUsersTemplate(type='text/template')
     <td><%= email %></td>
     <td><%= profile.name %></td>
     <td><a href="#users/<%= _id %>/edit" class="hs-edit btn btn-default" data-toggle="modal", data-target=".edit_user_form_<%= uiid %>">Edit</a></td>
     <td><a href="#users/<%= _id %>" class="hs-delete btn btn-default">Delete</a></td>
-  
+
   |<script id="addUserTemplate" type="text/template">
   | <div class="modal fade new_user_form" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="1">
   |   <div class="modal-dialog">
